@@ -1,0 +1,84 @@
+﻿@model IEnumerable<MvcMovie.Models.Movie>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<body onload="sweet()">
+</body>
+<hr />
+<h2 class="text-info text-center">Welcome to Movie List</h2><hr /><br />
+
+<p>
+    <a href="@Url.Action("Create", "Movies")" class="btn btn-success pull-right">Add New</a>
+
+</p>
+@using (Html.BeginForm())
+{
+    <p>
+        <span class="badge badge-pill badge-success" style="font-size:25px; background-color:teal">
+        <i style="margin-left:10px">Search Movie by Title</i>@Html.TextBox("SearchString")<span style="margin-left:10px">
+            <input type="submit" value="Search" class="btn btn-info" /></span></span>
+    </p>
+}
+<br /><br />
+@{
+    if (Model.Count() == 0)
+    {
+        <div class="alert alert-info">
+            No Movie List
+        </div>
+    }
+
+    else
+    {
+        <table class="table table-bordered table-responsive">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ReleaseDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Genre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>Action</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReleaseDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Genre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Edit", "Movies", new { id = item.ID })" class="btn btn-primary">Edit</a>
+                        <a href="@Url.Action("Details", "Movies", new { id = item.ID })" class="btn btn-success">View</a>
+                        <a href="@Url.Action("Delete", "Movies", new { id = item.ID })" class="btn btn-danger">Delete</a>
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+}
+<script type="text/javascript">
+    function sweet() {
+        swal("Welcome! to Movie List", "Click OK to Continue", "success");
+
+    }
+</script>

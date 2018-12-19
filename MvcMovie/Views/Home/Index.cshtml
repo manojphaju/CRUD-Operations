@@ -1,0 +1,21 @@
+﻿@model MvcMovie.Models.Movie
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<body onload="sweet()">
+</body>
+
+<script type="text/javascript">
+    setTimeout(function sweet() {
+        swal({
+            title: "Welcome to Site",
+            text: "Want to Continue ?",
+            icon: "success",
+        }).then(function () {
+            window.location = "@Url.Action("Index","Movies")";
+        });
+    }, 1000);
+</script>
+

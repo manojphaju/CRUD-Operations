@@ -1,0 +1,54 @@
+﻿@model MvcMovie.Models.Movie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <hr />
+    <h1 style="background-color:teal;color:white;font-family:Verdana;text-align:center;font-size:50px;">Details of <strong>@Model.Title</strong></h1>
+    <hr />
+    <div class="jumbotron">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ReleaseDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ReleaseDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Genre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Genre)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+        </dl>
+    </div>
+
+</div>
+<p>
+    <a href="@Url.Action("Edit","Movies",new {id=Model.ID })" class="btn btn-primary">Edit</a> |
+    <a href="@Url.Action("Index","Movies")" class="btn btn-success">Home</a>
+
+</p>
+
